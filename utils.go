@@ -72,7 +72,7 @@ func indexStringInSlice(s []string, what string) int {
 
 func marshalToJSONString(value interface{}) (*string, error) {
 
-	mBytes, err := json.Marshal(value)
+	mBytes, err := jsonConf.Marshal(value)
 	if err != nil {
 		return nil, err
 	}
@@ -95,7 +95,7 @@ func marshalWithoutNumber(value interface{}) (*string, error) {
 
 	var document interface{}
 
-	err = json.Unmarshal([]byte(*jsonString), &document)
+	err = jsonConf.Unmarshal([]byte(*jsonString), &document)
 	if err != nil {
 		return nil, err
 	}

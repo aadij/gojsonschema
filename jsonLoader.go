@@ -30,6 +30,7 @@ import (
 	"bytes"
 	"encoding/json"
 	"errors"
+	"github.com/json-iterator/go"
 	"io"
 	"io/ioutil"
 	"net/http"
@@ -40,7 +41,7 @@ import (
 
 	"github.com/xeipuuv/gojsonreference"
 )
-
+var jsonConf = jsoniter.ConfigCompatibleWithStandardLibrary
 var osFS = osFileSystem(os.Open)
 
 // JSONLoader defines the JSON loader interface
@@ -296,7 +297,7 @@ func (l *jsonGoLoader) LoadJSON() (interface{}, error) {
 
 	// convert it to a compliant JSON first to avoid types "mismatches"
 
-	jsonBytes, err := json.Marshal(l.JsonSource())
+	jsonBytes, err := jsonConf.Marshal(l.JsonSource())
 	if err != nil {
 		return nil, err
 	}
