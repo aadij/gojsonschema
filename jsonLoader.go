@@ -28,7 +28,7 @@ package gojsonschema
 
 import (
 	"bytes"
-	"encoding/json"
+	"github.com/json-iterator/go"
 	"errors"
 	"io"
 	"io/ioutil"
@@ -41,6 +41,7 @@ import (
 	"github.com/xeipuuv/gojsonreference"
 )
 
+var json = jsoniter.ConfigCompatibleWithStandardLibrary
 var osFS = osFileSystem(os.Open)
 
 // JSONLoader defines the JSON loader interface

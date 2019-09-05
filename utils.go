@@ -26,7 +26,6 @@
 package gojsonschema
 
 import (
-	"encoding/json"
 	"math/big"
 	"reflect"
 )
